@@ -508,8 +508,12 @@ GameObject:
   - component: {fileID: 6681530768933769984}
   - component: {fileID: 5848328720172921172}
   - component: {fileID: 4166185950079164174}
+  - component: {fileID: 5859040024087194680}
+  - component: {fileID: -6685662039147073823}
+  - component: {fileID: 3870171337060373775}
   - component: {fileID: 4846891664093384572}
   - component: {fileID: 4435579377604099934}
+  - component: {fileID: 2505928938644976745}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -602,6 +606,60 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5859040024087194680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706927397240622089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f37db7aa65873e4a8fa5b7443a937bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  View: {fileID: 3870171337060373775}
+--- !u!114 &-6685662039147073823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706927397240622089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6b3f7a87305ac4abf3b262f58443fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _moveController: {fileID: 5848328720172921172}
+  _barController: {fileID: 5859040024087194680}
+--- !u!114 &3870171337060373775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706927397240622089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0438ce7f0d4834449aedd05c6904eb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _hpColorBarState:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 1, g: 0.31793582, b: 0, a: 0}
+  - {r: 1, g: 0.60898983, b: 0, a: 0}
+  - {r: 0.4367679, g: 0.5622641, b: 0.22808823, a: 0}
+  - {r: 0, g: 1, b: 0.14964008, a: 0}
+  _hpBarIndicators:
+  - {fileID: 1013263046997789351}
+  - {fileID: 1883579528146550051}
+  - {fileID: 3677395335259982785}
+  - {fileID: 6984447697165583393}
+  - {fileID: 3739816630150644914}
 --- !u!114 &4846891664093384572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +736,27 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!135 &2505928938644976745
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706927397240622089}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.96
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3739816630150644914
 GameObject:
   m_ObjectHideFlags: 0

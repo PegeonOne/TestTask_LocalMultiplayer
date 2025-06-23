@@ -8,39 +8,18 @@ namespace Game.App.Enemy
     public sealed class EnemyController : BaseBehavior
     {
         [SerializeField] private LayerMask _playerLayer;
+        [SerializeField] private EnemyMoveController _moveController;
+        [SerializeField] private EnemyBulletSpawner _bulletSpawner;
 
-        private NavMeshAgent _navMeshAgent;
-        private float _walkRadius = 10f;
         private bool _isLockedPlayer = false;
         private float _searchRadius = 10f;
         private Transform _closestPlayer;
 
-
-        protected override void Initialise()
-        {
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-            MoveToRandomPoint();
-        }
-
         protected override void OnUpdate()
         {
             SearchPlayer();
-
-            if (!_isLockedPlayer)
-            {
-                if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
-                {
-                    MoveToRandomPoint();
-                }
-            }
-            else
-            {
-                Vector3 dir = (_closestPlayer.position - transform.position).normalized;
-                dir.y = 0f;
-
-                Quaternion lookRotation = Quaternion.LookRotation(dir);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-            }
+            _moveController.ApplyEnemyMove(_isLockedPlayer, _closestPlayer);
+            _bulletSpawner.Shoot(transform.forward, _isLockedPlayer);
         }
 
         private void SearchPlayer()
@@ -50,6 +29,7 @@ namespace Game.App.Enemy
             if (hits.Length == 0)
             {
                 _isLockedPlayer = false;
+                _closestPlayer = null;
                 return;
             }
 
@@ -58,17 +38,6 @@ namespace Game.App.Enemy
                 .First();
             _closestPlayer = closest.transform;
             _isLockedPlayer = true;
-        }
-
-        private void MoveToRandomPoint()
-        {
-            Vector3 randomDirection = Random.insideUnitSphere * _walkRadius;
-            randomDirection += transform.position;
-
-            if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, _walkRadius, NavMesh.AllAreas))
-            {
-                _navMeshAgent.SetDestination(hit.position);
-            }
-        }
+        }       
     }
 }

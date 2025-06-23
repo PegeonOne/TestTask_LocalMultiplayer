@@ -2,7 +2,7 @@ using Game.Core;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game.App.Player
 {
     public sealed class PlayerMoveController : BaseBehavior
     {
